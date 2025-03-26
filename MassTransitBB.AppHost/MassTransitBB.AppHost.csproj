@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <Sdk Name="Aspire.AppHost.Sdk" Version="9.0.0" />
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <IsAspireHost>true</IsAspireHost>
+    <UserSecretsId>951a1d6a-cb12-4021-82b3-66cfe396a9e7</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MassTransitBB.ApiService\MassTransitBB.ApiService.csproj" />
+    <ProjectReference Include="..\MassTransitBB.Web\MassTransitBB.Web.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Arshid.Aspire.ApiDocs.Extensions" Version="9.1.0" />
+    <PackageReference Include="Aspire.Hosting.AppHost" Version="9.1.0" />
+    <PackageReference Include="Aspire.Hosting.Azure.ServiceBus" Version="9.1.0" />
+    <PackageReference Include="Aspire.Hosting.RabbitMQ" Version="9.1.0" />
+    <PackageReference Include="Aspire.Hosting.SqlServer" Version="9.1.0" />
+  </ItemGroup>
+
+</Project>

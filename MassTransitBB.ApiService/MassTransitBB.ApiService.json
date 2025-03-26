@@ -1,0 +1,112 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "MassTransitBB.ApiService | v1",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/orders": {
+      "post": {
+        "tags": [
+          "MassTransitBB.ApiService"
+        ],
+        "operationId": "CreateOrder",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrderDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "OrderDto": {
+        "required": [
+          "confirmationEmail",
+          "orderItems",
+          "paymentInfo"
+        ],
+        "type": "object",
+        "properties": {
+          "confirmationEmail": {
+            "minLength": 10,
+            "type": "string",
+            "default": "test@microsoft.com"
+          },
+          "orderItems": {
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OrderItemDto"
+            }
+          },
+          "paymentInfo": {
+            "$ref": "#/components/schemas/PaymentInfoDto"
+          }
+        }
+      },
+      "OrderItemDto": {
+        "required": [
+          "productId"
+        ],
+        "type": "object",
+        "properties": {
+          "productId": {
+            "type": "string",
+            "format": "uuid",
+            "default": "883d3128-6a05-4712-bee6-c4e2a260097b"
+          },
+          "quantity": {
+            "maximum": 2147483647,
+            "minimum": 1,
+            "type": "integer",
+            "format": "int32",
+            "default": 1
+          }
+        }
+      },
+      "PaymentInfoDto": {
+        "required": [
+          "cardNumber",
+          "expiryDate",
+          "cvv"
+        ],
+        "type": "object",
+        "properties": {
+          "cardNumber": {
+            "type": "string",
+            "default": "378282246310005"
+          },
+          "expiryDate": {
+            "maxLength": 7,
+            "minLength": 7,
+            "type": "string",
+            "default": "10/2028"
+          },
+          "cvv": {
+            "maxLength": 3,
+            "minLength": 3,
+            "type": "string",
+            "default": "123"
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "MassTransitBB.ApiService"
+    }
+  ]
+}
